@@ -17,7 +17,15 @@ public class Scriptures
 
     public void HideRandomWords(int numberToHide)
     {
-       
+       Random random = new Random();
+       List<Word> visibleWords = _words.Where(w => !w.IsHidden()).ToList();
+
+       for (int i = 0; i < numberToHide && visibleWords.Count > 0; i++)
+        {
+            int index = random.Next(visibleWords.Count);
+            visibleWords[index].Hide();
+            visibleWords.RemoveAt(index);
+        }
     }
 
     public string GetDisplayText()
