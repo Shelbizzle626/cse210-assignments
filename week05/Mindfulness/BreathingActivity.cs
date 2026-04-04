@@ -1,14 +1,40 @@
-
+using System;
 public class BreathingActivity : Activity
-{
-    public BreathingActivity(string name, string description, int duration)
-    : base(name, description, duration)
+{ 
+    public BreathingActivity() : base(
+        "Breathing Activity", 
+        "This activity will help you realx by walking you through breathing in and out slowly. \nClear your mind and focus on your breathing.")
     {
         
     }
-
-    public void Run()
+    public override void Run()
     {
+        DisplayStartingMessage();
+
+        int elapsed = 0;
+        bool breatheIn = true;
         
+        while (elapsed < _duration)
+        {
+            int pauseTime = 4;
+            if (elapsed + pauseTime > _duration)
+                pauseTime = _duration - elapsed;
+
+            if (breatheIn)
+            {
+                Console.WriteLine("\nBreathe in... ");
+            }
+            else
+            {
+                Console.WriteLine("\nBreathe out... ");
+            }
+
+            ShowCountdown(pauseTime);
+            elapsed += pauseTime;
+            breatheIn = !breatheIn;
+        }
+
+        Console.WriteLine();
+        DisplayEndingMessage();
     }
 }
