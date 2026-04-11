@@ -8,7 +8,7 @@ public class EternalGoal : Goal
 
     public override void RecordEvent()
     {
-        
+        //Always earns points, never completes - no state to change
     }
 
     public override bool IsComplete()
@@ -18,11 +18,11 @@ public class EternalGoal : Goal
 
     public override string GetDetailsString()
     {
-        return GetDetailsString();
+        return $"[∞] {_shortName} ({_description})";
     }
 
     public override string GetStringRepresentation()
     {
-        return GetStringRepresentation();
+        return $"EternalGoal: {_shortName}, {_description}, {_points}";
     }
 }

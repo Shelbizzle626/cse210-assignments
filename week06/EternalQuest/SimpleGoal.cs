@@ -20,11 +20,12 @@ public class SimpleGoal : Goal
 
     public override string GetDetailsString()
     {
-        return GetDetailsString();
+        string status = _isComplete ? "X" : " ";
+        return $"[{status}] {_shortName} ({_description})";
     }
 
     public override string GetStringRepresentation()
     {
-        return GetStringRepresentation();
+        return $"SimpleGoal: {_shortName}, {_description}, {_points}, {_isComplete}";
     }
 }
